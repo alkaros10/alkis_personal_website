@@ -55,6 +55,92 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ===================================
+   Portfolio Lightbox
+   =================================== */
+function initPortfolioLightbox() {
+  const lightbox = document.querySelector('.lightbox');
+  if (!lightbox) return;
+
+  const closeBtn = lightbox.querySelector('.lightbox-close');
+  const titleEl = lightbox.querySelector('#lightbox-title');
+  const descEl = lightbox.querySelector('#lightbox-description');
+  const imgEl = lightbox.querySelector('#lightbox-image');
+  const placeholderEl = lightbox.querySelector('#lightbox-placeholder');
+
+  if (!closeBtn || !titleEl || !descEl || !imgEl || !placeholderEl) return;
+
+  let lastFocused = null;
+
+  function openLightbox(card) {
+    const titleNode = card.querySelector('.portfolio-title');
+    const descNode = card.querySelector('.portfolio-impact');
+    const title = titleNode ? titleNode.textContent.trim() : '';
+    const description = descNode ? descNode.textContent.trim() : '';
+    const img = card.querySelector('.portfolio-media img');
+
+    titleEl.textContent = title;
+    descEl.textContent = description;
+
+    if (img && img.getAttribute('src')) {
+      imgEl.src = img.currentSrc || img.src;
+      imgEl.alt = img.alt || title || 'Project preview';
+      imgEl.style.display = 'block';
+      placeholderEl.style.display = 'none';
+    } else {
+      imgEl.removeAttribute('src');
+      imgEl.alt = '';
+      imgEl.style.display = 'none';
+      placeholderEl.style.display = 'block';
+    }
+
+    lastFocused = document.activeElement;
+    document.body.classList.add('no-scroll');
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    closeBtn.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('no-scroll');
+
+    if (lastFocused && typeof lastFocused.focus === 'function') {
+      lastFocused.focus();
+    }
+    lastFocused = null;
+  }
+
+  const cards = document.querySelectorAll('.portfolio-card');
+  cards.forEach((card) => {
+    const titleEl = card.querySelector('.portfolio-title');
+    const projectName = titleEl ? titleEl.textContent.trim() : 'project';
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-label', `Expand ${projectName}`);
+
+    card.addEventListener('click', () => openLightbox(card));
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+        e.preventDefault();
+        openLightbox(card);
+      }
+    });
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+      closeLightbox();
+    }
+  });
+}
+
+/* ===================================
    Magnetic Button Effect (Desktop Only)
    =================================== */
 function initMagneticEffect() {
@@ -90,6 +176,7 @@ function initMagneticEffect() {
 
 // Initialize magnetic effect on load and resize
 document.addEventListener('DOMContentLoaded', initMagneticEffect);
+document.addEventListener('DOMContentLoaded', initPortfolioLightbox);
 window.addEventListener('resize', () => {
   // Re-initialize on resize (desktop/mobile switch)
   if (window.innerWidth >= 768) {

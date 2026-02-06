@@ -75,11 +75,77 @@
       <p><strong class="section-header">Current Focus:</strong> I am building at the intersection of Consumer and Autonomous Agents. My focus is on solving the UX and latency challenges required to bring AI into real-time human interaction.</p>
     </section>
 
+    <!-- Portfolio Section -->
+    <section class="portfolio section-fade">
+      <div class="portfolio-heading">
+        <p class="section-label"><strong>Key Designs</strong></p>
+        <p class="portfolio-subtitle">A focused set of end-to-end product builds, from first interaction to scalable systems.</p>
+      </div>
+      <div class="portfolio-grid">
+        <article class="portfolio-card">
+          <div class="portfolio-meta">
+            <h3 class="portfolio-title">Fortune 500 B2B Commerce Ecosystem</h3>
+            <p class="portfolio-impact">Led both the UX research and high-fidelity UI development for a suite of three internal configuration tools, streamlining complex workflows that process over $1B in annual revenue.</p>
+          </div>
+          <div class="portfolio-media">
+            <img class="portfolio-image" src="assets/portfolio/fortune500-commerce.png" alt="Fortune 500 B2B commerce ecosystem preview" loading="lazy" decoding="async">
+          </div>
+        </article>
+
+        <article class="portfolio-card">
+          <div class="portfolio-meta">
+            <h3 class="portfolio-title">Autonomous Surgical Interface (YC)</h3>
+            <p class="portfolio-impact">Designed the V1 tablet interface for the world's first autonomous surgical robot, enabling the historic first robotic-assisted HoLEP procedure.</p>
+          </div>
+          <div class="portfolio-media">
+            <img class="portfolio-image" src="assets/portfolio/yc-surgical-interface.png" alt="Autonomous surgical interface preview" loading="lazy" decoding="async">
+          </div>
+        </article>
+
+        <article class="portfolio-card">
+          <div class="portfolio-meta">
+            <h3 class="portfolio-title">Wellness B2B & B2C Platform</h3>
+            <p class="portfolio-impact">Designed a dual-sided ecosystem, scaling the consumer mobile app to 500k+ users and deploying the B2B retail platform to 100+ stores.</p>
+          </div>
+          <div class="portfolio-media">
+            <img class="portfolio-image" src="assets/portfolio/wellness-platform.png" alt="Wellness B2B and B2C platform preview" loading="lazy" decoding="async">
+          </div>
+        </article>
+
+        <article class="portfolio-card">
+          <div class="portfolio-meta">
+            <h3 class="portfolio-title">Reward-Based Screen Time App</h3>
+            <p class="portfolio-impact">Designed and developed a Flutter application that gamifies digital wellbeing, using a reward-based locking architecture to control screen time habits.</p>
+          </div>
+          <div class="portfolio-media">
+            <img class="portfolio-image" src="assets/portfolio/reward-screen-time.png" alt="Reward-based screen time app preview" loading="lazy" decoding="async">
+          </div>
+        </article>
+      </div>
+    </section>
+
     <!-- Contact Section -->
     <section class="contact section-fade">
       <a href="mailto:pr.alkis@vuel.app" class="contact-link">Get in touch →</a>
     </section>
   </main>
+
+  <!-- Portfolio Lightbox -->
+  <div class="lightbox" aria-hidden="true">
+    <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+      <button class="lightbox-close" type="button" aria-label="Close expanded view">Close</button>
+      <div class="lightbox-content">
+        <div class="lightbox-meta">
+          <h3 class="lightbox-title" id="lightbox-title"></h3>
+          <p class="lightbox-description" id="lightbox-description"></p>
+        </div>
+        <div class="lightbox-media">
+          <img class="lightbox-image" id="lightbox-image" alt="" loading="lazy" decoding="async">
+          <div class="lightbox-placeholder" id="lightbox-placeholder">Project image coming soon</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
