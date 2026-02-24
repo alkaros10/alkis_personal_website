@@ -75,11 +75,15 @@ function initPortfolioLightbox() {
     const titleNode = card.querySelector('.portfolio-title');
     const descNode = card.querySelector('.portfolio-impact');
     const title = titleNode ? titleNode.textContent.trim() : '';
-    const description = descNode ? descNode.textContent.trim() : '';
+    const fullDescription = card.getAttribute('data-full-description');
     const img = card.querySelector('.portfolio-media img');
 
     titleEl.textContent = title;
-    descEl.textContent = description;
+    if (fullDescription) {
+      descEl.innerHTML = fullDescription;
+    } else {
+      descEl.textContent = descNode ? descNode.textContent.trim() : '';
+    }
 
     if (img && img.getAttribute('src')) {
       imgEl.src = img.currentSrc || img.src;

@@ -362,6 +362,10 @@ section {
   display: block;
 }
 
+.portfolio-media--contain img {
+  object-fit: contain;
+}
+
 /* ===================================
    Lightbox (Project Expand)
    =================================== */
@@ -433,7 +437,8 @@ section {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  overflow: auto;
+  overflow-y: auto;
+  max-height: calc(90vh - 80px);
   padding-right: 4px;
 }
 
@@ -444,6 +449,16 @@ section {
 
 .lightbox-description {
   opacity: 0.8;
+  margin-bottom: 0;
+  max-width: none;
+}
+
+.lightbox-description p {
+  margin-bottom: 12px;
+  max-width: none;
+}
+
+.lightbox-description p:last-child {
   margin-bottom: 0;
 }
 
@@ -456,6 +471,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .lightbox-image {
